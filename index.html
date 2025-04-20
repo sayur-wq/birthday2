@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Idol Birthdays</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+</head>
+<body>
+  <h1>🎀 Idol Birthdays 🎀</h1>
+
+  <section>
+    <h2>💌 Save Your Birthday</h2>
+    <input type="date" id="userBirthday">
+    <button onclick="saveUserBirthday()">Save</button>
+    <button onclick="deleteUserBirthday()">Delete</button> 
+  </section>
+  
+  <section class="add-idol-section">
+    <h2>📌 Add New Idol</h2>
+    <div class="form-container">
+      <div class="form-inputs">
+        <input type="text" id="idolName" placeholder="Idol Name" oninput="updatePreview()">
+        <input type="date" id="idolBirthday" oninput="updatePreview()">
+        <div class="photo-upload">
+          <label for="idolPhoto">Photo:</label>
+          <input type="file" id="idolPhoto" accept="image/*" onchange="updatePreview()">
+          <div id="photoPreview" class="photo-preview"></div>
+        </div>
+        <textarea id="idolBio" placeholder="Biography" rows="3" oninput="updatePreview()"></textarea>
+        <input type="text" id="idolColor" placeholder="Favorite Color (e.g. Pink)" oninput="updatePreview()">
+        <input type="text" id="idolNationality" placeholder="Nationality (e.g. Korean)" oninput="updatePreview()">
+        <div class="social-links">
+          <input type="text" id="idolInstagram" placeholder="Instagram @username">
+          <input type="text" id="idolTwitter" placeholder="Twitter @username">
+          <input type="text" id="idolYouTube" placeholder="YouTube channel">
+        </div>
+        <button onclick="addIdol()">Add</button>
+      </div>
+      <div class="preview-container">
+        <h3>Preview</h3>
+        <div id="previewCard" class="idol-card">
+          <img src="https://via.placeholder.com/300x200?text=No+Photo" alt="Preview">
+          <h3>Idol Name</h3>
+          <p class="date">Birthday</p>
+          <div class="bio">Biography will appear here...</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section>
+    <h2>🎉 All Idols</h2>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search idols..." oninput="searchIdols()">
+      <i class="fas fa-search search-icon"></i>
+    </div>
+    <p><small>❤️ Dates close to your birthday are marked with a heart</small></p>
+    <div id="idolList" class="idol-grid"></div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightboxImg">
+  </div>
+
+  <!-- Notification System -->
+  <div id="notification" class="notification">
+    <div class="notification-content">
+      <span id="notificationMessage"></span>
+      <button onclick="closeNotification()" class="close-notification">×</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
